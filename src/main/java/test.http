@@ -1,0 +1,15 @@
+POST http://localhost:8080/calc
+Content-Type:application/json
+
+{
+  "num1": 255,
+  "num2": 3,
+  "operation": "sum"
+}
+
+###
+
+GET http://localhost:8080/calc/desc
+Content-Type:application/json
+
+####
