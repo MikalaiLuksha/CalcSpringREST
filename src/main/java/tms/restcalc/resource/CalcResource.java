@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping(path = "/calc")
 public class CalcResource {
 
-    private final List<Operation> operationList = new ArrayList<>();
 
     private final CalcService calcService;
 
@@ -29,7 +28,6 @@ public class CalcResource {
     private ResponseEntity<Operation> calc (@RequestBody Operation operation){
         Operation calcGo = calcService.calcGo(operation);
         if (calcGo!=null){
-            operationList.add(calcGo);
             return new ResponseEntity<>(calcGo, HttpStatus.OK);
         }
         else {
@@ -41,7 +39,7 @@ public class CalcResource {
 
     @GetMapping(path = "/{sort}")
     private ResponseEntity<List<Operation>> calcRes (@PathVariable(name = "sort") String sort){
-        List<Operation> operations = calcService.sortRes(sort, operationList);
+        List<Operation> operations = calcService.sortRes(sort);
         if (operations !=null){
             return new ResponseEntity<>(operations, HttpStatus.OK);
         }

@@ -2,7 +2,7 @@ POST http://localhost:8080/calc
 Content-Type:application/json
 
 {
-  "num1": 255,
+  "num1": 222,
   "num2": 3,
   "operation": "sum"
 }

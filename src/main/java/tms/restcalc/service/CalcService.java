@@ -12,6 +12,8 @@ public class CalcService {
 
     private ComparatorOperation comparatorOperation;
 
+    private final List<Operation> operationList = new ArrayList<>();
+
     @Autowired
     public CalcService(ComparatorOperation comparatorOperation) {
         this.comparatorOperation = comparatorOperation;
@@ -22,15 +24,20 @@ public class CalcService {
         switch (operation.getOperation()) {
             case "sum":
                 operationCalc = new Operation(operation.getNum1(), operation.getNum2(), operation.getNum1() + operation.getNum2(), operation.getOperation());
+                operationList.add(operationCalc);
                 break;
             case "minus":
                 operationCalc = new Operation(operation.getNum1(), operation.getNum2(), operation.getNum1() - operation.getNum2(), operation.getOperation());
+                operationList.add(operationCalc);
                 break;
             case "multi":
                 operationCalc = new Operation(operation.getNum1(), operation.getNum2(), operation.getNum1() * operation.getNum2(), operation.getOperation());
+                operationList.add(operationCalc);
                 break;
             case "div":
                 operationCalc = new Operation(operation.getNum1(), operation.getNum2(), operation.getNum1() / operation.getNum2(), operation.getOperation());
+                operationList.add(operationCalc);
+                break;
             default:
                 operationCalc = null;
         }
@@ -38,7 +45,7 @@ public class CalcService {
     }
 
 
-    public List<Operation> sortRes (String sortList, List<Operation> operationList){
+    public List<Operation> sortRes (String sortList){
         List<Operation> newOperationList = new ArrayList<>(operationList);
         switch (sortList){
             case "no":
